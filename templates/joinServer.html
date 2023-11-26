@@ -1,0 +1,29 @@
+{%extends 'layoutLogin.html'%}
+{%block title%}{{title}}{%endblock%}
+{%block box%}
+<div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="/" class="h1">{{server}}</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Enter the server password. Ask the server admins for one</p>
+
+      <form method="post">
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" name="password" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+          <div class="social-auth-links text-center mt-2 mb-3">
+            <button class="btn btn-block btn-primary" type="submit">
+              Join Server
+            </button>
+          </div>
+      </form>
+    </div>
+    <!-- /.card-body -->
+  </div>
+{%endblock%}

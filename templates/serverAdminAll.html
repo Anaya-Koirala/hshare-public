@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{%block title%}{{serverName}}-All members{%endblock%}
+{% block content %}
+    <ul>
+        {%for i in allUsers%}
+            <li>Email: {{i['email']}}<br>Server Role: {{i['server_role']}}</li><br>
+        {%endfor%}
+    </ul>
+{% endblock content %}

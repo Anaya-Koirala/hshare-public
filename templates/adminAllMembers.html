@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%block title%}All Users{%endblock%}
+{% block content %}
+    <ul>
+        {%for i in allUsers%}
+            <li>Email: {{i['email']}}<br>
+                Joined Servers:
+                {%if length(i['servers']) != 0%}
+                    <ul>
+                        {%for x in i['servers']%}
+                            <li>{{x}}</li>
+                        {%endfor%}
+                    </ul>
+                {%else%}
+                <b>No Servers Joined</b>
+                {%endif%}
+                <form method="post">
+                    <input value="{{i['email']}}" type="hidden" name="email">
+                    <input class="btn btn-danger" value="Delete User" type="submit">
+                </form>
+            </li><br>
+        {%endfor%}
+    </ul>
+{% endblock content %}

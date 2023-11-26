@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%block title%}Admin Blogs{%endblock%}
+
+{%block content%}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Blog</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form method="post">
+                  <div class="row">
+                    <div class="col">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Blog Title</label>
+                        <input type="text" class="form-control" placeholder="Blog Title" name="title" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <label>Blog HTML Code</label>
+                        <textarea class="form-control" rows="3" placeholder="Blog HTML Code" name="code" required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                    <button type="submit" class="btn btn-primary">Add Blog</button>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+    </div>
+</section>
+{%endblock%}

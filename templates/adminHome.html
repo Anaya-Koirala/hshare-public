@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%block title%}Page Admin{%endblock%}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            {%for i in tasks%}
+                <a href="{{request.url}}/{{i}}" class="col-md-3 col-sm-6 col-12">
+                    <div>
+                        <div class="info-box">
+                              <div class="info-box-content">
+                                <span class="info-box-text">{{i}}</span>
+                              </div>
+                        </div>
+                    </div>
+                </a>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+{% endblock content %}

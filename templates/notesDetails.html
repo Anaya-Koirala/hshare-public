@@ -1,0 +1,171 @@
+{%extends 'base.html'%}
+{%block title%}Hshare {{title}}{%endblock%}
+{%block style%}
+<style>
+    .color-palette {
+      height: 35px;
+      line-height: 35px;
+      text-align: right;
+      padding-right: .75rem;
+    }
+
+    .color-palette.disabled {
+      text-align: center;
+      padding-right: 0;
+      display: block;
+    }
+
+    .color-palette-set {
+      margin-bottom: 15px;
+    }
+
+    .color-palette span {
+      display: none;
+      font-size: 12px;
+    }
+
+    .color-palette:hover span {
+      display: block;
+    }
+
+    .color-palette.disabled span {
+      display: block;
+      text-align: left;
+      padding-left: .75rem;
+    }
+
+    .color-palette-box h4 {
+      position: absolute;
+      left: 1.25rem;
+      margin-top: .75rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      display: block;
+      z-index: 7;
+    }
+  </style>
+{%endblock%}
+{%block content%}
+<section class="content">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-post">
+          Post Resources
+        </button>
+      </div>
+      <div class="modal fade" id="modal-post">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form class="container-fluid" method="post" enctype="multipart/form-data" action="{{request.url}}/upload">
+              <div class="modal-header">
+              <h4 class="modal-title">Post Resources</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputTitle">Title</label>
+                    <input type="text" id="inputTitle" class="form-control" name="title" required placeholder="Title">
+                </div>
+                  <div class="form-group">
+                  <label for="exampleSelectRounded0">Subject</label>
+                  <select class="custom-select rounded-0" id="exampleSelectRounded0" name="subject">
+                    {%for i in subjects%}
+                        <option>{{i}}</option>
+                      {%endfor%}
+                  </select>
+                </div>
+                  <div class="form-group border-none">
+                  <label for="inputfile">Select Resource: </label>&nbsp;&nbsp;
+                  <input type="file" class="" name="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+text/plain, application/pdf" id="inputfile" required>
+                </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+    </section><br>
+<section class="content">
+      <div class="container-fluid">
+        <h5 class="mt-4 mb-2">Subjects</h5>
+
+        <div class="row">
+          <div class="col-12">
+            <!-- Custom Tabs -->
+            <div class="card">
+
+              <div class="card-header d-flex p-0">
+                <ul class="nav nav-pills p-2">
+                  {%for i in subjects%}
+                        <li class="nav-item col"><a class="nav-link" href="#tab_{{i}}" data-toggle="tab">{{i}}</a></li>
+                    {%endfor%}
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                  {%for i in subjects%}
+                        <div class="tab-pane" id="tab_{{i}}">
+                            {%set current = allNotes[subjects.index(i)]%}
+                                {%if current|length > 0%}
+                                    <div class="row">
+                                    {%for x in current%}
+                                          <div class="col-md-4">
+                                                {%if x['status'] == "verified"%}
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon bg-success">
+                                                          Verified
+                                                        </div>
+                                                      </div>
+                                                {%else%}
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon bg-danger">
+                                                          <small>UNVERIFIED</small>
+                                                        </div>
+                                                      </div>
+                                                {%endif%}
+                                            <!-- Widget: user widget style 2 -->
+                                            <div class="card card-widget widget-user-2 shadow-sm">
+                                              <!-- Add the bg color to the header using any of the bg-* classes -->
+                                              <div class="widget-user-header" style="text-align: center">
+                                                <!-- /.widget-user-image -->
+                                                <h3 class="widget-user-username m-auto"><b>{{ x['title'] }}</b></h3>
+                                                <h5 class="widget-user-desc m-auto"><small><a href="/profile">{{ x['user'].split('@')[0] }}</a></small></h5>
+                                              </div>
+                                              <div class="card-footer p-0">
+                                                <ul class="nav flex-column">
+                                                  <li class="nav-item">
+                                                      <a href="{{x['link']}}" target="_blank">
+                                                          <button class="btn btn-info nav-link m-auto row">
+                                                              View Resource
+                                                          </button>
+                                                      </a>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                            <!-- /.widget-user -->
+                                          </div>
+                                    {%endfor%}
+                                    </div>
+                                {%else%}
+                                    <h3>No Notes Available for {{i}}</h3>
+                                {%endif%}
+                          </div>
+                    {%endfor%}
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- ./card -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+{%endblock%}

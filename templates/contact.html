@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block title%}Hshare {{title}}{%endblock%}
+{%block content%}
+<section class="content">
+    <div class="container-fluid">
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-body row">
+          <div class="col-md-5 text-center d-flex align-items-center justify-content-center">
+            <div class="">
+              <h2>H<strong>Share</strong></h2>
+              <p class="lead mb-5">Share Ideas . Grow Together
+              </p>
+            </div>
+          </div>
+          <form method="post" class="col-md-7">
+            <div>
+            {%if 'user' in session%}
+              <div class="form-group">
+                <label for="inputEmail">E-Mail</label>
+                <input type="email" id="inputEmail" class="form-control" readonly value="{{g.user.email}}" name="email">
+              </div>
+              {%else%}
+              <div class="form-group">
+              <label for="inputEmail">E-Mail</label>
+              <input type="email" id="inputEmail" class="form-control" required name="email">
+            </div>
+              {%endif%}
+            <div class="form-group">
+              <label for="inputSubject">Title</label>
+              <input type="text" id="inputSubject" class="form-control" required name="sub">
+            </div>
+            <div class="form-group">
+              <label for="inputMessage">Message</label>
+              <textarea id="inputMessage" class="form-control" rows="4" required name="desc"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Send message">
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+  </div>
+    </section>
+{%endblock%}

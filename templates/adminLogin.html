@@ -1,0 +1,36 @@
+{%extends 'layoutLogin.html'%}
+{%block title%}Admin Login{%endblock%}
+{%block box%}
+<div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="/" class="h1"><b>H</b>Share</a>
+    </div>
+    <div class="card-body">
+      <form method="post">
+          <p class="login-box-msg">Enter the verification code sent to your email</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" readonly value="{{g.user.email}}" name="email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Page Administrator Password" required name="pass">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+        <div class="social-auth-links text-center">
+            <button class="btn btn-block btn-primary" type="submit">
+              Login As Admin
+            </button>
+          </div>
+      </form>
+    </div>
+    <!-- /.form-box -->
+  </div>
+{%endblock%}

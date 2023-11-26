@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{%block title%}Hshare {{title}}{%endblock%}
+{%block content%}
+<section class="content">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-primary" onclick="window.location.href = '{{request.url}}/admin'">
+          Manage Server
+        </button>
+        <button type="button" class="btn btn-danger" onclick="window.location.href = '{{request.url}}/leave'">
+          Leave Server
+        </button>
+      </div>
+    </section>
+<section class="content">
+      <div class="container-fluid">
+        <h3 class="mt-4 mb-4">Server Channels</h3>
+            <ol class="list-group">
+              {%for i in server.get_all_channels()%}
+                <a href="{{request.url}}/{{i}}"><li class="list-group-item channelList"><strong>{{i}}</strong></li></a>
+            {%endfor%}
+            </ol>
+      </div><!-- /.container-fluid -->
+    </section>
+{%endblock%}
+{%block script%}
+    <script>
+        channels = document.getElementsByClassName('channelList')
+        console.log(channels)
+        for (i in channels){
+            a = channels[i]
+            name = a.textContent || a.innerText;
+            channels[i].innerHTML = `${parseInt(i)+1}. ${name}`
+        }
+    </script>
+{%endblock%}

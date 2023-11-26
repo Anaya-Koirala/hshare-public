@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Change Password</legend>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" placeholder="Current Password" name="current" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" placeholder="New Password" name="new" required>
+                </div>
+                </fieldset>
+                <div class="form-group">
+                    <input class="btn btn-outline-info" type="Submit" value="submit">
+                </div>
+
+        </form>
+    </div>
+{%endblock%}

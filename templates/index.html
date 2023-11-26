@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>HShare</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="static/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="static/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="static/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="static/img/fevicon.png" type="static/img/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <link rel = "icon" href = "static/imgs/icon.png" type = "image/x-icon">
+      
+      <!-- Google Search Tags -->
+      <meta itemprop="description" name="hshare" content="HShare , a website for students to help each others in education related matters">
+      <meta itemprop="name" name="Hshare" content="hshare" >
+      <meta itemprop="author" name="author" content="krsoft" >
+      <meta name="google-site-verification" content="aRhpmWkZheFCPLSqb0GJMaLcfLKzB_8KNzZ0VykpiuQ" />
+
+      
+   </head>
+
+   <!-- body -->
+   <body class="main-layout" style="background-color: white">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="static/imgs/test.gif" alt="#"  alt='hshare' /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header class="section">
+         <!-- header inner -->
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <div class="menu-area">
+                        <div class="limit-box">
+                           <nav class="main-menu">
+                              <ul class="menu-area-main">
+                                 {% if 'user' in session %}
+                                    <li> <a href="/about">About</a>
+                                    <li><a href="/servers">Servers</a></li>
+                                    <li><a href="/profile">Profile</a></li>
+                                    <li><a href="/notes">Notes</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                    <li><a href="/blogs">Blogs</a></li>   
+                                    
+                                    <div class="navbar-nav">
+                                 {% else %}   
+                                    <li> <a href="/">Home</a> </li>
+                                    
+                                    <li> <a href="/about">About</a>
+                                    <li><a href="/login">Login</a>
+                                    <li><a href="/signup">Sign Up</a>
+                                    <li> <a href="/about">About</a>         
+                                    <li><a href="/blogs">Blogs</a></li>   
+                                    
+                                    <div class="navbar-nav">
+                                 {% endif %}
+                                    
+                                  </div>
+                                    </div></ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end header inner -->
+      </header>
+      <!-- end header -->
+      <section >
+         <div id="main_slider" class="section carousel slide banner-main" data-ride="carousel" style="background-color: #60bfd2">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <div class="row marginii">
+                           <!--div id="alert-wrapper"><div class="alert alert-info alert-dismissible fade show" role="alert">
+                           Hey There! We have just released a new update for taking <strong><a href="/notes">Notes</a></strong>. We'd appreciate your <a href="/contactus">feedback</a>! Please <a href="/contactus">ContactUs</a> if you need any support.
+                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                           </button>
+                         </div></div-->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                           <div class="carousel-caption ">
+                              <h1>Welcome to <strong class="color">HShare</strong></h1>
+                              <p class="lead">HShare is a website for students to learn and teach other regarding various educational questions.Students can ask questions they are confused in and other students can share the ans and help them solve it. <br>
+                              <br>
+                              
+                              <a class="btn btn-lg btn-primary" href= "/about" role="button">Learn More</a>
+                           </div>
+                        </div>
+                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                           <div class="img-box">
+                              <div class="logo"> <a href="/"><img alt='hshare' src="static/imgs/logo.png" alt="#"></a> </div>
+                           </div>
+                           
+                        </div>
+                     </div>
+                     <div class="d-flex flex-column bd-highlight mb-3" style="color: brown;">
+                        
+                           <div class="row">
+                           <div class="alert alert-info " role="alert">
+                           <center><strong><p style="font-family: Impact; font-size: 14pt">Blogs Out Now !!!</p></strong></center>
+                           {% block addBlogs %}
+                           <div class="card" style="width: 14rem;">
+                              <div class="card-body" align="center">
+                                 <b><u><h5 class="card-title">{% block name %}{% endblock name %}</h5></u></b>
+                                 <a href= {% block url %} {% endblock url %} class="card-link">Read</a>
+                              </div>
+                           </div>
+                           {% endblock addBlogs %}   
+                           {% block addBlogs %}{% block name %}Introduction To Hshare{% endblock name %}{% block url %}"/blogs/1"{% endblock url %}{% endblock addBlogs %}
+                     </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div></section>
+         <br><br><br>
+
+
+      <!-- end Contact Us-->
+      <div id="footer" class="Address layout_padding" style="color: white;">
+         <center><p>Copyright  : KRSoft©</p></center>
+      </div>
+
+      <p>
+         <center>Our other website for free games : <a href="https://ineedfreegames.herokuapp.com" class="text-black">
+            <b>
+               <u>Here</u>
+            </b>
+         </a>
+         </center>
+
+
+
+
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/js/popper.min.js"></script>
+      <script src="static/js/bootstrap.bundle.min.js"></script>
+      <script src="static/js/jquery-3.0.0.min.js"></script>
+      <script src="static/js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="static/js/custom.js"></script>
+      <!-- javascript -->
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+         
+         $(".zoom").hover(function(){
+         
+         $(this).addClass('transition');
+         }, function(){
+         
+         $(this).removeClass('transition');
+         });
+         });
+         
+      </script> 
+   </body>
+</html>

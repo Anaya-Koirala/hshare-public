@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{%block title%}{{serverName}}-Members{%endblock%}
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <div id="members">
+        <ul>
+            {%if validate(g.user.email)['server_role'] != "O"%}
+                {%for i in allUsers%}
+                    {%if i['email'] != g.user.email and i['server_role'] != "O" and i['server_role'] != "A"%}
+                        <li>
+                            <form method="post">
+                                <input type="text" value="{{i.email}}" readonly name="user">
+                                <select name="role">
+                                    {%if i['server_role'] == "A"%}
+                                          <optgroup label="Admin">
+                                            <option value="A" selected>A</option>
+                                          </optgroup>
+                                          <optgroup label="Normal Member">
+                                            <option value="M">M</option>
+                                          </optgroup>
+                                    {%else%}
+                                          <optgroup label="Admin">
+                                            <option value="A">A</option>
+                                          </optgroup>
+                                          <optgroup label="Normal Member">
+                                            <option value="M" selected>M</option>
+                                          </optgroup>
+                                    {%endif%}
+                                </select>
+                                <input type="submit" value="save">
+                            </form>
+                        </li>
+                    {%endif%}
+                {%endfor%}
+            {%else%}
+                {%for i in allUsers%}
+                    {%if i['email'] != g.user.email%}
+                        {%if i['server_role'] != "O"%}
+                            <li class="EligibleMembers">
+                                <form method="post">
+                                    <input type="text" value="{{i.email}}" readonly name="user">
+                                    <select name="role">
+                                            {%if i['server_role'] == "A"%}
+                                                  <optgroup label="Admin">
+                                                    <option value="A" selected>A</option>
+                                                  </optgroup>
+                                                  <optgroup label="Normal Member">
+                                                    <option value="M">M</option>
+                                                  </optgroup>
+                                            {%else%}
+                                                  <optgroup label="Admin">
+                                                    <option value="A">A</option>
+                                                  </optgroup>
+                                                  <optgroup label="Normal Member">
+                                                    <option value="M" selected>M</option>
+                                                  </optgroup>
+                                            {%endif%}
+                                    </select>
+                                    <input type="submit" value="save">
+                                </form>
+                            </li>
+                        {%endif%}
+                    {%endif%}
+                {%endfor%}
+            {%endif%}
+        </ul>
+    </div>
+        </div>
+    </section>
+{% endblock content %}
+{%block script%}
+<script>
+        if (document.getElementsByClassName('EligibleMembers').length == 0){
+            document.getElementById('members').innerHTML = "<h3>NO ELEGIBLE MEMBERS FOUND</h3>"
+        }
+    </script>
+{%endblock%}

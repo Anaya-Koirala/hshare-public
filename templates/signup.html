@@ -1,0 +1,58 @@
+{%extends 'layoutLogin.html'%}
+{%block title%}{{title}}{%endblock%}
+{%block box%}
+<div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="/" class="h1"><b>H</b>Share</a>
+    </div>
+    <div class="card-body">
+      <form method="post" action="/signup/verification">
+        {%if 'signup_code' not in session%}
+          <p class="login-box-msg">Register a new account</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" required name="email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" required name="password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+        {%else%}
+          <p class="login-box-msg">Enter the verification code sent to your email</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" readonly value="{{session['signup_email']}}" name="email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="code" required name="code">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+        {%endif%}
+        <div class="social-auth-links text-center">
+            <button class="btn btn-block btn-primary" type="submit">
+              Sign up
+            </button>
+          </div>
+      </form>
+
+      <a href="/login" class="text-center">I already have an account</a>
+    </div>
+    <!-- /.form-box -->
+  </div>
+{%endblock%}

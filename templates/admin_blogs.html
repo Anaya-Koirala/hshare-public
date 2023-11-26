@@ -1,0 +1,69 @@
+{%extends 'base.html'%}
+{%block title%}Admin Blogs{%endblock%}
+
+{%block content%}
+
+<section class="content">
+    <div class="container-fluid">
+        {%for i in blogs%}
+            <div class="row">
+                <div class="col">
+                  <div class="card card-dark collapsed-card">
+                    <div class="card-header">
+                      <h3 class="card-title">{{i['title']}}</h3>
+
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                      <!-- /.card-tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                          <div class="card-body">
+                            <form method="post">
+                                <input type="hidden" class="form-control" value="1" name="delete" readonly>
+                                <div class="row">
+                                <div class="col">
+                                  <!-- text input -->
+                                  <div class="form-group">
+                                    <label>Blog ID</label>
+                                    <input type="text" class="form-control" value="{{i['id']}}" name="id" readonly>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <!-- text input -->
+                                  <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" value="{{i['title']}}" name="title">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <!-- textarea -->
+                                  <div class="form-group">
+                                    <label>Blog Code</label>
+                                    <textarea class="form-control" rows="3" name="code">{{i['code']}}</textarea>
+                                  </div>
+                                </div>
+                              </div>
+                                <button type="submit" class="btn btn-primary float-left">Save Changes</button>
+                            </form>
+                              <form method="post">
+                                  <input type="hidden" name="id" value="{{i['id']}}">
+                                  <button type="submit" class="btn btn-danger float-right">Delete Blog</button>
+                              </form>
+                          </div>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+              </div>
+        {%endfor%}
+    </div>
+</section>
+{%endblock%}

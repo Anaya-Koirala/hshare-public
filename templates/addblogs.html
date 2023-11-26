@@ -1,0 +1,8 @@
+{% block addBlogs %}
+<div class="card" style="width: 14rem;">
+    <div class="card-body" align="center">
+      <b><u><h5 class="card-title">{% block name %}{% endblock name %}</h5></u></b>
+      <a href= {% block url %} {% endblock url %} class="card-link">Read</a>
+    </div>
+</div>
+{% endblock addBlogs %}

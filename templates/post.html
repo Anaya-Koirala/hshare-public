@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{%block title%}Hshare-{{post['title']}}{%endblock%}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <!-- Box Comment -->
+            <div class="card card-widget">
+              <div class="card-header">
+                <div class="user-block">
+                  <img class="img-circle" src="{{url_for('static', filename='imgs/avatar5.png')}}" alt="User Image">
+                  <span class="username"><a href="/profile">{{post['user'].split('@')[0]}}</a></span>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  <h3>Title: {{post['title']}}</h3>
+                {%if post['desc'] != ""%}
+                  <p>Description:&nbsp;&nbsp;{{post['desc']}}</p>
+                {%endif%}
+                  {%if post['link'] != "NONE"%}
+                    <br><p><a href="{{post['link']}}">Additional Resource</a></p>
+                  {%endif%}
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger" onclick="window.location.href='/{{url}}/delete/{{post['id']}}'">
+                  Delete Post
+                </button>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{%block content%}
+
+<div class="container-fluid">
+    <iframe id="blog" height="100%" width="100%" scrolling="no"></iframe>
+</div>
+
+{%endblock content %}
+
+{%block script%}
+
+<script>
+    var blogs = document.getElementById('blog')
+    var doc = blogs.contentWindow.document
+    doc.open();
+    doc.write(String.raw`{{docCode | safe}}`);
+    doc.close();
+    doc.body.style.maxWidth = "none"
+    doc.body.style.padding = "10px"
+    blogs.style.height = doc.body.scrollHeight + "px"
+</script>
+
+{%endblock%}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%block title%}Blogs{%endblock%}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            {%for i in blogs%}
+                <a href="blogs/{{i['id']}}" class="col-md-3 col-sm-3 col-6">
+                    <div>
+                        <div class="info-box">
+                              <div class="info-box-content">
+                                <span class="info-box-text">{{i['title']}}</span>
+                              </div>
+                        </div>
+                    </div>
+                </a>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+{% endblock content %}

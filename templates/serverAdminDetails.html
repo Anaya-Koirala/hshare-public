@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{%block title%}{{serverName}}-details{%endblock%}
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <form method="post">
+                {%if details.get_server_details()%}
+                    <input type="text" placeholder="NEW SERVER PASSWORD" required name="password" value="{{details.get_server_details()}}">
+                {%else%}
+                    <input type="text" placeholder="NEW SERVER PASSWORD" required name="password">
+                {%endif%}
+                <input type="submit" value="submit">
+            </form>
+            {%if details.get_server_details()%}
+                <br><br>
+                <form method="post">
+                    <input type="hidden" value="d" name="p">
+                    <input type="submit" value="REMOVE SERVER PASSWORD">
+                </form>
+            {%endif%}
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{%block title%}Create Server{%endblock%}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <form method="post" class="col">
+            <div>
+              <div class="form-group">
+              <label for="inputEmail">Server Name</label>
+              <input type="text" id="inputEmail" class="form-control" required name="name">
+            </div>
+            <div class="form-group">
+              <label for="ChannelNum">Number of Channels</label>
+              <input type="number" id="ChannelNum" class="form-control" required name="num" onchange="checkChannel()" min="1">
+            </div>
+                <div id="Allchannels">
+
+                </div>
+            <div class="form-group">
+              <label for="createPassword">Password (leave empty if no password needed)</label>
+              <input type="text" id="createPassword" class="form-control" name="password">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Create Server">
+            </div>
+          </div>
+          </form>
+        </div>
+    </div>
+</section>
+{%endblock%}
+{%block script%}
+<script>
+    function checkChannel(){
+        nums = parseInt(document.getElementById('ChannelNum').value)
+        channelsWrapper = document.getElementById('Allchannels')
+        channelsWrapper.innerHTML = ""
+        for (i = 0; i < nums; i++){
+            channelsWrapper.innerHTML+=`
+            <div class="form-group">
+              <label for="inputEmail">Channel ${i+1} Name</label>
+              <input type="text" id="inputEmail" class="form-control" required name="channel${i+1}" required>
+            </div>
+            `
+        }
+    }
+</script>
+{%endblock%}

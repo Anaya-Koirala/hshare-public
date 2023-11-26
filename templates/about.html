@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{%block title%}Hshare {{title}}{%endblock%}
+{%block content%}
+<div class="container">
+  <p>HShare is a website for students to <strong>learn and teach</strong> each other regarding various educational questions. Students can <strong>ask questions</strong> they are confused in and other students can share the answers and <strong>help solve it.</strong></p>
+  <ol>
+    <li>Students can ask , answer and discuss confusing questions</li>
+    <li>Students can upload answers (pdf, pptx, docx, xlsx, txt)</li>
+    <li>If you have any problems , you can easily contact the admins</li>
+    <li>Features will be constantly added (it is still under construction )</li>
+  </ol>
+  <h3>How Does HShare Work ?</h3>
+  <p>HShare has a system of servers and channels. Each Server can represent your class and each channel can represent your subject. There can be public server for everyone to use and you can also make your private server with password protection.If you want a private server please contact the admins.</p>
+  <img src="{{url_for('static', filename='imgs/about_page.png')}} " alt='hshare'  >
+  <img src="{{url_for('static', filename='imgs/example.png')}}" alt='hshare'  ><br><br>
+  <strong>If you have any queries please feel free to contact the admins at <a href="mailto:krhomeworksite@gmail.com">krhomeworksite@gmail.com</a> or <a href="/contactus">Contact Us Here</a> </strong>
+</div>
+{%endblock%}

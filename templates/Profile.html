@@ -1,0 +1,102 @@
+{%extends 'base.html'%}
+{%block title%}Hshare {{title}}{%endblock%}
+{%block content%}
+<section class="content">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-pass">
+          Change Password
+        </button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">
+          Delete Account
+        </button>
+      </div>
+      <div class="modal fade" id="modal-pass">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form class="container-fluid" method="post">
+              <input type="hidden" value="0" name="delete">
+              <div class="modal-header">
+              <h4 class="modal-title">Change Password</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                <label for="inputName">Current Password</label>
+                <input type="password" id="inputName" class="form-control" name="current" required>
+              </div>
+                <div class="form-group">
+                  <label for="inputEmail">New Password</label>
+                  <input type="password" id="inputEmail" class="form-control" name="new" required>
+                </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <div class="modal fade" id="modal-delete">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <form method="post">
+                <input type="hidden" value="1" name="delete">
+                <div class="modal-header">
+                <h4 class="modal-title">Delete Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to <b>delete your account</b>?<br><br>Your account and all related account data will be <b>permanently deleted</b>.<br>You can always Sign-Up again if you change your mind.</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-danger">Delete Account</button>
+                </div>
+              </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+    </section>
+<section class="content">
+      <div class="container-fluid">
+        <h3 class="mt-4 mb-4">Joined Servers</h3>
+
+        <div class="row">
+          {%for i in g.user.get_servers()%}
+            <div class="col-md-3">
+            <!-- Widget: user widget style 1 -->
+            <div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header bg-info">
+                <h3 class="widget-user-username"><b>{{i}}</b></h3>
+              </div>
+              <div class="widget-user-image">
+                <img class="img-circle elevation-2" src="{{url_for('static', filename='imgs/serverPic.png')}}" alt="Server Icon">
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="container-fluid">
+                    <div class="description-block">
+                      <button class="btn btn-primary" onclick="window.location.href='/servers/{{i}}'">Go To Server Page</button>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.widget-user -->
+          </div>
+          {%endfor%}
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+{%endblock%}

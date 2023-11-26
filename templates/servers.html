@@ -1,0 +1,110 @@
+{%extends 'base.html'%}
+{%block title%}{{title}}{%endblock%}
+{% block content %}
+
+    <!-- legend class="border-bottom mb-4">Recommended Servers</legend>
+    <ul>
+        {%for i in public%}
+            <li>{{i}}<br><a href="/joinserver/{{i}}">Join Server</a></li><br>
+        {%endfor%}
+    </ul>
+    <legend class="border-bottom mb-4">Search for servers</legend>
+    <div class="form-group">
+        <input class="form-control form-control" type="text" placeholder="Name" name="search" id="search" onkeyup="filterServers()"><br>
+    </div>
+    <ul id="serverList">
+        {%for i in allServers%}
+            <li><span>{{i}}</span><br><a href="/joinserver/{{i}}">Join Server</a></li><br>
+        {%endfor%}
+    </ul -->
+    <section class="content">
+      <div class="container-fluid">
+        <h3 class="mt-4 mb-4">Recommended Servers</h3>
+
+        <div class="row">
+          {%for i in public%}
+            <div class="col-md-3">
+            <!-- Widget: user widget style 1 -->
+            <div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header bg-success">
+                <h3 class="widget-user-username text-light"><b>{{i}}</b></h3>
+              </div>
+              <div class="widget-user-image">
+                <img class="img-circle elevation-2" src="{{url_for('static', filename='imgs/serverPic.png')}}" alt="Server Icon">
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="container-fluid">
+                    <div class="description-block">
+                      <button class="btn btn-primary" onclick="window.location.href='/servers/{{i}}'">Join Server</button>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.widget-user -->
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+        <div class="container-fluid">
+        <h3 class="mt-4 mb-4">Other Servers</h3>
+        <div class="form-group">
+            <input type="email" id="search" class="form-control" placeholder="Search For Servers" onkeyup="filterServers()">
+        </div>
+        <div class="row">
+          {%for i in allServers%}
+            {%if i != "PNF_Grade9"%}
+              <div class="col-md-3 slist">
+            <!-- Widget: user widget style 1 -->
+              <div class="card card-widget widget-user">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-info">
+                  <h3 class="widget-user-username text-light sname"><b>{{i}}</b></h3>
+                </div>
+                <div class="widget-user-image">
+                  <img class="img-circle elevation-2" src="{{url_for('static', filename='imgs/serverPic.png')}}" alt="Server Icon">
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="container-fluid">
+                      <div class="description-block">
+                        <button class="btn btn-primary" onclick="window.location.href='/servers/{{i}}'">Join Server</button>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                  </div>
+                  <!-- /.row -->
+                </div>
+              </div>
+              <!-- /.widget-user -->
+            </div>
+            {%endif%}
+          {%endfor%}
+        </div>
+      </div>
+    </section>
+{% endblock %}
+{%block script%}
+    <script>
+        function filterServers() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            li = document.getElementsByClassName("sname");
+            serverList = document.getElementsByClassName("slist");
+            for (i = 0; i < li.length; i++) {
+                a = li[i]
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    serverList[i].style.display = "";
+                } else {
+                    serverList[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+{%endblock%}
